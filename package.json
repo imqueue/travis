@@ -1,6 +1,6 @@
 {
   "name": "node-travis",
-  "version": "1.0.0-dev",
+  "version": "1.0.1-0",
   "description": "Travis CI client library for node written in TypeScript",
   "keywords": [
     "travis-ci",
