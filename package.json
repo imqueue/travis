@@ -70,7 +70,7 @@
   },
   "main": "index.js",
   "bin": {
-    "imq": "./index.js"
+    "travis": "./bin/travis-cli.js"
   },
   "typescript": {
     "definitions": "index.d.ts"
