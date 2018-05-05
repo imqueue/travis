@@ -7,6 +7,8 @@ import { TravisClient, TravisHttpError } from '../..';
 
 const { expect } = require('chai').use(require('chai-as-promised'));
 
+console.log('hello check:', process.env.HELLO_CHECK);
+
 describe('TravisClient', function() {
     const version = '2.0.0';
 
