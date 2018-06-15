@@ -1,6 +1,6 @@
 {
   "name": "@imqueue/travis",
-  "version": "1.0.0-dev1",
+  "version": "1.0.0",
   "description": "Travis CI client library for node written in TypeScript",
   "keywords": [
     "travis-ci",
