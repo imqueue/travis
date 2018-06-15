@@ -1,5 +1,5 @@
 {
-  "name": "node-travis",
+  "name": "@imqueue/travis",
   "version": "1.0.0-dev1",
   "description": "Travis CI client library for node written in TypeScript",
   "keywords": [
@@ -29,13 +29,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com/imqueue/node-travis.git"
+    "url": "git@github.com/imqueue/travis.git"
   },
   "bugs": {
-    "url": "https://github.com/imqueue/node-travis/issues"
+    "url": "https://github.com/imqueue/travis/issues"
   },
-  "homepage": "https://github.com/imqueue/node-travis",
-  "author": "Mykhailo Stadnyk <mikhus@gmail.com> (https://github.com/Mikhus)",
+  "homepage": "https://github.com/imqueue/travis",
+  "author": "imqueue.com <support@imqueue.com> (https://imqueue.com)",
   "license": "ISC",
   "dependencies": {
     "@types/request": "^2.47.0",
