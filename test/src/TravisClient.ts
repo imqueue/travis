@@ -64,10 +64,12 @@ describe('TravisClient', function() {
         });
         it('should throw if non-object argument given', () => {
             const travis: any = new TravisClient();
+            // noinspection TypeScriptValidateJSTypes
             expect(travis.authenticate()).to.be.rejectedWith(TypeError);
             expect(travis.authenticate([])).to.be.rejectedWith(TypeError);
             expect(travis.authenticate('')).to.be.rejectedWith(TypeError);
             expect(travis.authenticate(()=>{})).to.be.rejectedWith(TypeError);
+            // noinspection TypeScriptValidateJSTypes
             expect(travis.authenticate(null)).to.be.rejectedWith(TypeError);
             expect(travis.authenticate(true)).to.be.rejectedWith(TypeError);
             expect(travis.authenticate(false)).to.be.rejectedWith(TypeError);
@@ -136,6 +138,7 @@ describe('TravisClient', function() {
             it(`should expose calls chain`, () => {
                 let context = travis;
                 Object.keys(chain).forEach((name: string) => {
+                    // noinspection JSIncompatibleTypesComparison
                     if (chain[name] === null) {
                         return;
                     }
@@ -153,6 +156,7 @@ describe('TravisClient', function() {
             it('should throw if invalid number of args given', () => {
                 let context = travis;
                 Object.keys(chain).forEach((name: string) => {
+                    // noinspection JSIncompatibleTypesComparison
                     if (chain[name] === null) {
                         return;
                     }
@@ -173,10 +177,11 @@ describe('TravisClient', function() {
                 let name = names[i];
 
                 const stub = sinon.stub(travis.agent, 'request')
-                    .callsFake(() => {});
+                    .callsFake(async () => ({}));
 
                 // fill chain
                 while (context) {
+                    // noinspection JSIncompatibleTypesComparison
                     if (chain[name] === null) {
                         break;
                     }
@@ -189,7 +194,7 @@ describe('TravisClient', function() {
 
                 const callData = { fake: name };
 
-                await context[name](callData);
+                await (context[name] as any)(callData);
 
                 const [ callMethod, callUri ] = [
                     name.toUpperCase(),
@@ -212,6 +217,7 @@ describe('TravisClient', function() {
 
                 // fill chain
                 while (context) {
+                    // noinspection JSIncompatibleTypesComparison
                     if (chain[name] === null) {
                         break;
                     }
@@ -226,7 +232,7 @@ describe('TravisClient', function() {
 
                 try {
                     // it should normally process
-                    await context[name](callData);
+                    await (context[name] as any)(callData);
                 }
 
                 catch (err) {
@@ -249,11 +255,10 @@ function toCamelCase(name: string): string {
 function getChains(
     version: string
 ): Array<{ uri: string, chain: { [name: string]: string[] }}> {
+    // noinspection TypeScriptUnresolvedVariable
     return require(`../../api/v${version}/routes.json`)
         .filter((section: any) => section.prefix !== '/error')
-        .map((section: { routes: { uri: string, verb: string}[] }) =>
-            section.routes
-        )
+        .map((section: any) => section.routes)
         .reduce((prev: any, next: any) => prev.concat(next), [])
         .map((route: { uri: string, verb: string }) => {
             const { uri, verb }: any = route;

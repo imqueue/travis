@@ -110,6 +110,7 @@ function buildUrl(
  * @returns {TravisRoutesDescription}
  */
 function buildRoutes(api: any): TravisRoutesDescription {
+    // noinspection TypeScriptUnresolvedVariable
     return api.map((section: any) => section.routes)
         .reduce((curr: any[], next: any[]) => curr.concat(next), [])
         .map((route: any) => {
@@ -289,7 +290,7 @@ async function authenticateGithubToken(msg: TravisAuthMessage) {
     }
 
     return await authenticateAccessToken.call(this,
-        await this.auth.github.post(msg)
+        await (this.auth as TravisClient).github.post(msg)
     );
 }
 
@@ -355,7 +356,7 @@ export class TravisClient implements FunctionObject {
             return await authenticateGithubToken.call(this, msg);
         }
 
-        throw new Error('Unexpected arguments!');
+        throw new TypeError('Unexpected arguments!');
     }
 
     /**
