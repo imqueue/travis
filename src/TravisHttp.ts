@@ -51,10 +51,10 @@ export class TravisHttp {
     public getHeaders(): HttpHeaders {
         const headers: HttpHeaders = JSON.parse(JSON.stringify(this.headers));
 
-        headers.Accept = 'application/vnd.travis-ci.2+json, */*; q=0.01';
+        headers.Accept = 'application/vnd.travis-ci.2.1+json';
 
         if (this.getAccessToken()) {
-            headers.Authorization = `token ${this.getAccessToken()}`;
+            headers.Authorization = `token "${ this.getAccessToken() }"`;
         }
 
         return headers;

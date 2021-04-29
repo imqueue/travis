@@ -269,8 +269,9 @@ async function authenticateAccessToken(msg: TravisAuthMessage) {
         throw new TypeError('Invalid access_token');
     }
 
-    await this.agent.request('GET', '/users', msg);
     this.agent.setAccessToken(msg.access_token);
+
+    await this.agent.request('GET', '/users', msg);
 
     return msg;
 }
