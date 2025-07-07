@@ -27,8 +27,10 @@ setupEnvironment();
 
 import * as sinon from 'sinon';
 import { TravisClient, TravisHttpError } from '../..';
+import { use, expect } from 'chai';
+import chaiAsPromised from 'chai-as-promised';
 
-const { expect } = require('chai').use(require('chai-as-promised'));
+use(chaiAsPromised);
 
 console.log('hello check:', process.env.HELLO_CHECK);
 
