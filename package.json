@@ -34,7 +34,7 @@
   "bugs": {
     "url": "https://github.com/imqueue/travis/issues"
   },
-  "homepage": "https://github.com/imqueue/travis",
+  "homepage": "https://imqueue.org/",
   "author": "imqueue.com <support@imqueue.com> (https://imqueue.com)",
   "license": "GPL-3.0-only",
   "dependencies": {
